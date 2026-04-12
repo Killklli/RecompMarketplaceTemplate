@@ -1,0 +1,23 @@
+{
+  "github_sources": [
+    {
+      "enabled": true,
+      "repo": "Killklli/MNSGRecompRando",
+      "nrm_file": "mnsg_recomp_rando.nrm",
+      "zip_containing_nrm": "RecompRando.zip"
+    }
+  ],
+  "thunderstore_sources": [
+    {
+      "enabled": true,
+      "community": "zelda-64-recompiled",
+      "game_id": "mnsg",
+      "filters": {
+        "include_nsfw": false,
+        "categories": [],
+        "namespaces": []
+      }
+    }
+  ],
+  "output_file": "mods.json"
+}
