@@ -256,7 +256,16 @@ def process_thunderstore_source(source: dict) -> dict[str, Any]:
         namespace: str = pkg.get("owner", "")
         display_name: str = f"{namespace}/{mod_name}" if namespace else mod_name
         version: str = latest.get("version_number", "0.0.0")
-        file_url: str = latest.get("download_url", "")
+        raw_download_url: str = latest.get("download_url", "")
+        # Thunderstore download URLs are redirects; resolve to the actual ZIP URL.
+        file_url: str = raw_download_url
+        if raw_download_url:
+            try:
+                head_resp = requests.head(raw_download_url, allow_redirects=True, timeout=15)
+                if head_resp.url != raw_download_url:
+                    file_url = head_resp.url
+            except Exception as exc:
+                print(f"WARNING | Thunderstore | Could not resolve redirect for {display_name}: {exc}")
         description: str = latest.get("description", pkg.get("date_created", ""))
         icon_url: str = latest.get("icon", "")
 
