@@ -1,4 +1,4 @@
-# Reads config.json and writes mods.json for the Recomp Marketplace.
+# Reads config.json and writes mods.json for the Recomp Discovery.
 # Sources: GitHub Releases and Thunderstore.
 
 from __future__ import annotations

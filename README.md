@@ -1,4 +1,4 @@
-# Recomp Marketplace Template
+# Recomp Discovery Template
 
 A GitHub Actions-powered mod registry for N64 Recomp projects. On a scheduled cron, this workflow automatically fetches mod metadata from **GitHub Releases** and **Thunderstore**, then writes a single `mods.json` file — which your Recomp project can point to directly as a raw JSON endpoint.
 
@@ -14,7 +14,7 @@ config.json  →  fetch_mods.py  →  mods.json  (committed back to the repo)
 2. A GitHub Actions workflow runs `fetch_mods.py` on a schedule (cron).
 3. The script fetches the latest release data from each source, extracts metadata and thumbnails from `.nrm` / `.zip` assets, and writes `mods.json`.
 4. The workflow commits `mods.json` back to the repository.
-5. Your Recomp project reads the raw `mods.json` URL to display the marketplace.
+5. Your Recomp project reads the raw `mods.json` URL to display the Discovery.
 
 ---
 
@@ -70,7 +70,7 @@ on:
 
 ## Pointing Your Recomp Project at the Registry
 
-Once the workflow has run at least once, `mods.json` will be committed to your repository. Use the **raw** GitHub URL as your marketplace endpoint:
+Once the workflow has run at least once, `mods.json` will be committed to your repository. Use the **raw** GitHub URL as your Discovery endpoint:
 
 ```
 https://raw.githubusercontent.com/<owner>/<repo>/mod_data/mods.json
@@ -78,10 +78,10 @@ https://raw.githubusercontent.com/<owner>/<repo>/mod_data/mods.json
 
 For example:
 ```
-https://raw.githubusercontent.com/Killklli/RecompMarketplaceTemplate/mod_data/mods.json
+https://raw.githubusercontent.com/Killklli/RecompDiscoveryTemplate/mod_data/mods.json
 ```
 
-Pass this URL to your Recomp project's marketplace configuration and it will always serve the latest data on every cron update — no server required.
+Pass this URL to your Recomp project's Discovery configuration and it will always serve the latest data on every cron update — no server required.
 
 ---
 
